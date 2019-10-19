@@ -28,7 +28,6 @@ $("#startButton").on("click", function () {
 function startQuiz() {
 
     $(".answers").css("display", "none");
-    clearAnswers();
     correctAnswers = 0;
     incorrectAnswers = 0;
     unanswered = 0;
@@ -49,8 +48,8 @@ function questionOne() {
 
     
 
-        $("#timer").text(questionTimer);
-       setInterval(countDown,3000);
+    $("#timer").text(questionTimer);
+    setInterval(countDown,3000);
 
 
 

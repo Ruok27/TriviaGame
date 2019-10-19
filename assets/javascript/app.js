@@ -26,10 +26,8 @@ function startQuiz() {
     incorrectAnswers = 0;
     unanswered = 0;
 
-    timerId = setInterval(questionTwo, 1000);
-    setInterval(questionTwo, 1000);
     timerId = setInterval(questionOne, 1000);
-    setInterval(questionOne, 1000);
+    questionOne();
 
 
 }
@@ -75,6 +73,9 @@ function questionOne() {
         $(".game").css("display", "none");
 
 
+        questionTwo();
+
+
     })
 
     $("#answer2").on("click", function () { })
@@ -115,6 +116,7 @@ function questionTwo() {
         $(".answers").css("display", "none");
         $("#question").empty();
         $(".game").css("display", "none");
+        questionThree();
 
 
     })
@@ -133,8 +135,8 @@ function questionTwo() {
 function questionThree() {
 
 
-    $("#question").text("Who played Batman in the Nolan films?");
-    $("#answer1").text("Patrick Patman");
+    $("#question").text("What batman villain controls plants?");
+    $("#answer1").text("Joker");
     $("#answer2").text("Christian Bale");
     $("#answer3").text("Arthur Fleck");
     $("#answer4").text("Jason Todd");
