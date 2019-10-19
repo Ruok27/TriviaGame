@@ -2,9 +2,9 @@ let correctAnswers = 0;
 let incorrectAnswers = 0;
 let unanswered = 0;
 let timerId;
-let questionTimer = 30;
+let questionTimer = 10;
 
-let seconds = 0;
+
 
 $("#startButton").on("click", function () {
 
@@ -26,33 +26,53 @@ function startQuiz() {
     incorrectAnswers = 0;
     unanswered = 0;
 
-    timerId = setInterval(questionOne, 1000);
+
     questionOne();
 
 
 }
 
-function countDown() {
 
-    questionTimer--;
-
-}
 
 
 
 function questionOne() {
 
-
     clearAnswers();
 
 
+    let id = setInterval(() => {
+
+
+        $("#timer").text(questionTimer);
+        questionTimer--;
+
+
+        if (questionTimer < 0) {
+
+            clearInterval(id);
+            unanswered++;
+            $(".answers").css("display", "none");
+            $("#question").empty();
+            $(".game").css("display", "none");
+
+            $("#question").text("Times up!");
+            $("#question").append(" Correct Answer: Tim Drake");
+            $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+            
+
+
+            setTimeout(questionTwo, 5000);
 
 
 
-    setInterval(countDown, 3000);
+
+        }
 
 
-    $("#timer").text(questionTimer);
+
+    }, 1000);
+
 
 
 
@@ -65,15 +85,154 @@ function questionOne() {
 
 
     $("#answer1").on("click", function () {
-        clearInterval(timerId);
-
+        clearInterval(id);
         incorrectAnswers++;
         $(".answers").css("display", "none");
         $("#question").empty();
         $(".game").css("display", "none");
 
+        $("#question").text("Incorrect!");
+        $("#question").append(" Correct Answer: Tim Drake");
+        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
 
-        questionTwo();
+
+        setTimeout(questionTwo, 5000);
+
+
+
+
+
+    })
+
+    $("#answer2").on("click", function () {
+        clearInterval(id);
+        correctAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Correct!");
+        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+
+        
+
+
+        setTimeout(questionTwo, 5000);
+
+
+
+
+
+    })
+
+    $("#answer3").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Incorrect!");
+        $("#question").append(" Correct Answer: Tim Drake");
+        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+
+
+        setTimeout(questionTwo, 5000);
+
+
+
+
+
+    })
+    $("#answer4").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Incorrect!");
+        $("#question").append(" Correct Answer: Tim Drake");
+        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+
+
+        setTimeout(questionTwo, 5000);
+
+
+
+
+
+    })
+
+
+    if (questionTimer < 1) {
+
+        clearInterval(timerId);
+        return unanswered++;
+
+    }
+
+
+
+}
+
+
+function questionTwo() {
+
+    clearAnswers();
+
+
+    let id = setInterval(() => {
+
+
+        $("#timer").text(questionTimer);
+        questionTimer--;
+
+
+        if (questionTimer < 0) {
+
+            clearInterval(id);
+            unanswered++;
+            $(".answers").css("display", "none");
+            $("#question").empty();
+            $(".game").css("display", "none");
+
+            $("#question").text("Times up!")
+
+
+            setTimeout(questionThree, 5000);
+
+
+
+
+        }
+
+
+
+    }, 1000);
+
+
+
+
+
+    $("#question").text("Who played Batman in the Nolan films?");
+    $("#answer1").text("Patrick Patman");
+    $("#answer2").text("Christian Bale");
+    $("#answer3").text("Arthur Fleck");
+    $("#answer4").text("Jason Todd");
+
+
+    $("#answer1").on("click", function () {
+        clearInterval(intervalID);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $(".game").text("Incorrect!")
+
+
+        setInterval(questionThree), 1000;
 
 
     })
@@ -95,44 +254,11 @@ function questionOne() {
 }
 
 
-function questionTwo() {
 
-
-    $("#timer").text(questionTimer);
-    questionTimer--;
-    clearAnswers();
-
-    $("#question").text("Who played Batman in the Nolan films?");
-    $("#answer1").text("Patrick Patman");
-    $("#answer2").text("Christian Bale");
-    $("#answer3").text("Arthur Fleck");
-    $("#answer4").text("Jason Todd");
-
-
-    $("#answer1").on("click", function () {
-        clearInterval(timerId);
-
-        incorrectAnswers++;
-        $(".answers").css("display", "none");
-        $("#question").empty();
-        $(".game").css("display", "none");
-        questionThree();
-
-
-    })
-
-    $("#answer2").on("click", function () { })
-    $("#answer3").on("click", function () { })
-    $("#answer4").on("click", function () { })
-
-
-
-
-
-
-}
 
 function questionThree() {
+
+    clearAnswers()
 
 
     $("#question").text("What batman villain controls plants?");
@@ -156,12 +282,10 @@ function questionThree() {
     $("#answer3").on("click", function () { })
     $("#answer4").on("click", function () { })
 
-
-
-
-
-
 }
+
+
+
 
 function quizResults() {
 
@@ -177,6 +301,8 @@ function quizResults() {
 function clearAnswers() {
 
 
+    questionTimer = 10;
+    $(".answers").css("display", "inherit");
     $("#question").text("");
     $("#answer1").text("");
     $("#answer2").text("");
