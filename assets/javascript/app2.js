@@ -1,121 +1,137 @@
-let correctAnswers = 0;
-let incorrectAnswers = 0;
-let unanswered = 0;
-let timerId;
-let questionTimer = 10;
+function questionThree() {
+
+    clearAnswers();
 
 
+    let id = setInterval(() => {
 
 
-$("#startButton").on("click", function () {
+        $("#timer").text(questionTimer);
+        questionTimer--;
 
 
+        if (questionTimer < 0) {
 
-    $("#startButton").css("display", "none");
-    $(".answers").css("display", "inherit");
-    startQuiz();
-    
-
-
-
-
-
-
-})
-
-
-
-function startQuiz() {
-
-    $(".answers").css("display", "none");
-    correctAnswers = 0;
-    incorrectAnswers = 0;
-    unanswered = 0;
-
-
-    questionOne();
-
-
-
-}
-
-
-
-function questionOne() {
-
-    
-    $(".answers").css("display", "inherit");
-
-    
-
-    $("#timer").text(questionTimer);
-    setInterval(countDown,3000);
-
-
-
-        $("#question").text("Who is the third Robin?");
-        $("#answer1").text("Damien Wayne");
-        $("#answer2").text("Tim Drake");
-        $("#answer3").text("Dick Greyson");
-        $("#answer4").text("Jason Todd");
-
-
-        $("#answer1").on("click", function () {
-            clearInterval(timerId);
-
-            incorrectAnswers++;
+            clearInterval(id);
+            unanswered++;
             $(".answers").css("display", "none");
-            $("#question").text(" ");
+            $("#question").empty();
             $(".game").css("display", "none");
 
-
-        })
-
-        $("#answer2").on("click", function () {
-
-
-            clearInterval(timerId);
-
-            incorrectAnswers++;
-            $(".answers").css("display", "none");
-            $("#question").text(" ");
-            $(".game").css("display", "none");
+            $("#question").text("Times up!");
+            $("#question").append(" Correct Answer: Helena Bertinelli");
+            $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
 
 
 
-        })
+            setTimeout(questionFour, 5000);
 
 
-        $("#answer3").on("click", function () {
 
 
-            clearInterval(timerId);
-
-            incorrectAnswers++;
-            $(".answers").css("display", "none");
-            $("#question").text(" ");
-            $(".game").css("display", "none");
-
-        })
-        $("#answer4").on("click", function () {
+        }
 
 
-            clearInterval(timerId);
 
-            incorrectAnswers++;
-            $(".answers").css("display", "none");
-            $("#question").text(" ");
-            $(".game").css("display", "none");
-
-        })
+    }, 1000);
 
 
-    
+
+
+
+    $("#question").text("What is the Huntresses’ real name?");
+    $("#answer1").text("Helena Bertinelli");
+    $("#answer2").text("Emma Frost");
+    $("#answer3").text("Shana Blane");
+    $("#answer4").text("Barbara Gordon");
+
+
+    $("#answer1").on("click", function () {
+        clearInterval(id);
+        correctAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Correct!");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+
+    $("#answer2").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Helena Bertinelli");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+
+    $("#answer3").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Helena Bertinelli");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+    $("#answer4").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Helena Bertinelli");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
 
 
     if (questionTimer < 1) {
-
-        break;
 
         clearInterval(timerId);
         return unanswered++;
@@ -125,33 +141,3 @@ function questionOne() {
 
 
 }
-
-
-
-
-function quizResults() {
-
-    $("#game").text(`Number of correct answers: ${correctAnswers}`);
-    $("#game").text(`Number of incorrect answers: ${incorrectAnswers}`);
-    $("#game").text(`Number of unanswered questions: ${unanswered}`);
-
-    $("#startOver").css("display", "inherit");
-
-
-}
-
-function clearAnswers() {
-
-
-    $("#question").text("");
-    $("#answer1").text("");
-    $("#answer2").text("");
-    $("#answer3").text("");
-    $("#answer4").text("");
-
-
-
-
-
-}
-

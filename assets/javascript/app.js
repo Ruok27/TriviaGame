@@ -22,6 +22,7 @@ $("#startButton").on("click", function () {
 function startQuiz() {
 
     clearAnswers();
+    $("#timeRemaining").css("display", "inherit");
     correctAnswers = 0;
     incorrectAnswers = 0;
     unanswered = 0;
@@ -58,8 +59,8 @@ function questionOne() {
 
             $("#question").text("Times up!");
             $("#question").append(" Correct Answer: Tim Drake");
-            $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
-            
+            $("#question").append($('<img>', { src: 'assets/images/tim.gif' }));
+
 
 
             setTimeout(questionTwo, 5000);
@@ -91,9 +92,9 @@ function questionOne() {
         $("#question").empty();
         $(".game").css("display", "none");
 
-        $("#question").text("Incorrect!");
+        $("#question").text("Wrong!");
         $("#question").append(" Correct Answer: Tim Drake");
-        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+        $("#question").append($('<img>', { src: 'assets/images/tim.gif' }));
 
 
         setTimeout(questionTwo, 5000);
@@ -112,9 +113,9 @@ function questionOne() {
         $(".game").css("display", "none");
 
         $("#question").text("Correct!");
-        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+        $("#question").append($('<img>', { src: 'assets/images/tim.gif' }));
 
-        
+
 
 
         setTimeout(questionTwo, 5000);
@@ -132,9 +133,9 @@ function questionOne() {
         $("#question").empty();
         $(".game").css("display", "none");
 
-        $("#question").text("Incorrect!");
+        $("#question").text("Wrong!");
         $("#question").append(" Correct Answer: Tim Drake");
-        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+        $("#question").append($('<img>', { src: 'assets/images/tim.gif' }));
 
 
         setTimeout(questionTwo, 5000);
@@ -151,9 +152,9 @@ function questionOne() {
         $("#question").empty();
         $(".game").css("display", "none");
 
-        $("#question").text("Incorrect!");
+        $("#question").text("Wrong!");
         $("#question").append(" Correct Answer: Tim Drake");
-        $("#question").append($('<img>',{src:'assets/images/tim.gif'}));
+        $("#question").append($('<img>', { src: 'assets/images/tim.gif' }));
 
 
         setTimeout(questionTwo, 5000);
@@ -197,7 +198,10 @@ function questionTwo() {
             $("#question").empty();
             $(".game").css("display", "none");
 
-            $("#question").text("Times up!")
+            $("#question").text("Times up!");
+            $("#question").append(" Correct Answer: Christian Bale");
+            $("#question").append($('<img>', { src: 'assets/images/bale.gif' }));
+
 
 
             setTimeout(questionThree, 5000);
@@ -215,31 +219,520 @@ function questionTwo() {
 
 
 
-    $("#question").text("Who played Batman in the Nolan films?");
-    $("#answer1").text("Patrick Patman");
-    $("#answer2").text("Christian Bale");
-    $("#answer3").text("Arthur Fleck");
-    $("#answer4").text("Jason Todd");
+    $("#question").text("Who played Batman in the Chrisopher Nolan films?");
+    $("#answer1").text("Christian Bale");
+    $("#answer2").text("Patrick Patman");
+    $("#answer3").text("Michael Keaton");
+    $("#answer4").text("Jack Napier");
 
 
     $("#answer1").on("click", function () {
-        clearInterval(intervalID);
+        clearInterval(id);
+        correctAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Correct!");
+        $("#question").append($('<img>', { src: 'assets/images/Bale.gif' }));
+
+
+        setTimeout(questionThree, 5000);
+
+
+
+
+
+    })
+
+    $("#answer2").on("click", function () {
+        clearInterval(id);
         incorrectAnswers++;
         $(".answers").css("display", "none");
         $("#question").empty();
         $(".game").css("display", "none");
 
-        $(".game").text("Incorrect!")
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Christian Bale");
+        $("#question").append($('<img>', { src: 'assets/images/bale.gif' }));
 
 
-        setInterval(questionThree), 1000;
+
+
+        setTimeout(questionThree, 5000);
+
+
+
 
 
     })
 
-    $("#answer2").on("click", function () { })
-    $("#answer3").on("click", function () { })
-    $("#answer4").on("click", function () { })
+    $("#answer3").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Christian Bale");
+        $("#question").append($('<img>', { src: 'assets/images/bale.gif' }));
+
+
+        setTimeout(questionThree, 5000);
+
+
+
+
+
+    })
+    $("#answer4").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Christian Bale");
+        $("#question").append($('<img>', { src: 'assets/images/bale.gif' }));
+
+
+        setTimeout(questionThree, 5000);
+
+
+
+
+
+    })
+
+
+    if (questionTimer < 1) {
+
+        clearInterval(timerId);
+        return unanswered++;
+
+    }
+
+
+
+}
+
+
+function questionThree() {
+
+    clearAnswers();
+
+
+    let id = setInterval(() => {
+
+
+        $("#timer").text(questionTimer);
+        questionTimer--;
+
+
+        if (questionTimer < 0) {
+
+            clearInterval(id);
+            unanswered++;
+            $(".answers").css("display", "none");
+            $("#question").empty();
+            $(".game").css("display", "none");
+
+            $("#question").text("Times up!");
+            $("#question").append(" Correct Answer: Helena Bertinelli");
+            $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+            setTimeout(questionFour, 5000);
+
+
+
+
+        }
+
+
+
+    }, 1000);
+
+
+
+
+
+    $("#question").text("The Huntress is the secret identity of which character?");
+    $("#answer1").text("Helena Bertinelli");
+    $("#answer2").text("Emma Frost");
+    $("#answer3").text("Shana Blane");
+    $("#answer4").text("Barbara Gordon");
+
+
+    $("#answer1").on("click", function () {
+        clearInterval(id);
+        correctAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Correct!");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+
+    $("#answer2").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Helena Bertinelli");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+
+    $("#answer3").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Helena Bertinelli");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+    $("#answer4").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Helena Bertinelli");
+        $("#question").append($('<img>', { src: 'assets/images/huntress.gif' }));
+
+
+
+
+        setTimeout(questionFour, 5000);
+
+
+
+
+
+    })
+
+
+    if (questionTimer < 1) {
+
+        clearInterval(timerId);
+        return unanswered++;
+
+    }
+
+
+
+}
+
+
+function questionFour() {
+
+    clearAnswers();
+
+
+    let id = setInterval(() => {
+
+
+        $("#timer").text(questionTimer);
+        questionTimer--;
+
+
+        if (questionTimer < 0) {
+
+            clearInterval(id);
+            unanswered++;
+            $(".answers").css("display", "none");
+            $("#question").empty();
+            $(".game").css("display", "none");
+
+            $("#question").text("Times up!");
+            $("#question").append(" Correct Answer: Umbrella");
+            $("#question").append($('<img>', { src: 'assets/images/pen.gif' }));
+
+
+
+            setTimeout(questionFive, 5000);
+
+
+
+
+        }
+
+
+
+    }, 1000);
+
+
+
+
+
+    $("#question").text("What is the Penguin's signature item?");
+    $("#answer1").text("Fish");
+    $("#answer2").text("Flippers");
+    $("#answer3").text("Umbrella ");
+    $("#answer4").text("Clown car");
+
+
+    $("#answer1").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Umbrella");
+        $("#question").append($('<img>', { src: 'assets/images/pen.gif' }));
+
+
+        setTimeout(questionFive, 5000);
+
+
+
+
+
+    })
+
+    $("#answer2").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Umbrella");
+        $("#question").append($('<img>', { src: 'assets/images/pen.gif' }));
+
+
+
+        setTimeout(questionFive, 5000);
+
+
+
+
+
+    })
+
+    $("#answer3").on("click", function () {
+        clearInterval(id);
+        correctAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Correct!");
+        $("#question").append($('<img>', { src: 'assets/images/pen.gif' }));
+
+
+        setTimeout(questionFive, 5000);
+
+
+
+
+
+    })
+    $("#answer4").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: Umbrella");
+        $("#question").append($('<img>', { src: 'assets/images/pen.gif' }));
+
+
+        setTimeout(questionFive, 5000);
+
+
+
+
+
+    })
+
+
+    if (questionTimer < 1) {
+
+        clearInterval(timerId);
+        return unanswered++;
+
+    }
+
+
+
+}
+
+
+function questionFive() {
+
+    clearAnswers();
+
+
+    let id = setInterval(() => {
+
+
+        $("#timer").text(questionTimer);
+        questionTimer--;
+
+
+        if (questionTimer < 0) {
+
+            clearInterval(id);
+            unanswered++;
+            $(".answers").css("display", "none");
+            $("#question").empty();
+            $(".game").css("display", "none");
+
+            $("#question").text("Times up!");
+            $("#question").append(" Correct Answer: His parents died in front of him as a child");
+            $("#question").append($('<img>', { src: 'assets/images/parents.gif' }));
+
+
+
+            setTimeout(quizResults, 5000);
+
+
+
+
+        }
+
+
+
+    }, 1000);
+
+
+
+
+
+    $("#question").text("Bruce Wayne became Batman because ____");
+    $("#answer1").text("His Butler died");
+    $("#answer2").text("The joker poisoned Gotham's water supply");
+    $("#answer3").text("His parents died in front of him as a child ");
+    $("#answer4").text("Commissioner Gordon told him to");
+
+
+    $("#answer1").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: His parents died in front of him as a child");
+        $("#question").append($('<img>', { src: 'assets/images/parents.gif' }));
+
+
+
+        setTimeout(quizResults, 5000);
+
+
+
+
+
+    })
+
+    $("#answer2").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: His parents died in front of him as a child");
+        $("#question").append($('<img>', { src: 'assets/images/parents.gif' }));
+
+
+
+        setTimeout(quizResults, 5000);
+
+
+
+
+
+    })
+
+    $("#answer3").on("click", function () {
+        clearInterval(id);
+        correctAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Correct!");
+        $("#question").append($('<img>', { src: 'assets/images/parents.gif' }));
+
+
+
+        setTimeout(quizResults, 5000);
+
+
+
+
+
+    })
+    $("#answer4").on("click", function () {
+        clearInterval(id);
+        incorrectAnswers++;
+        $(".answers").css("display", "none");
+        $("#question").empty();
+        $(".game").css("display", "none");
+
+        $("#question").text("Wrong!");
+        $("#question").append(" Correct Answer: His parents died in front of him as a child");
+        $("#question").append($('<img>', { src: 'assets/images/parents.gif' }));
+
+
+
+        setTimeout(quizResults, 5000);
+
+
+
+
+
+    })
 
 
     if (questionTimer < 1) {
@@ -256,42 +749,19 @@ function questionTwo() {
 
 
 
-function questionThree() {
 
-    clearAnswers()
-
-
-    $("#question").text("What batman villain controls plants?");
-    $("#answer1").text("Joker");
-    $("#answer2").text("Christian Bale");
-    $("#answer3").text("Arthur Fleck");
-    $("#answer4").text("Jason Todd");
-
-
-    $("#answer1").on("click", function () {
-
-        incorrectAnswers++;
-        $(".answers").css("display", "none");
-        $("#question").empty();
-        $(".game").css("display", "none");
-
-
-    })
-
-    $("#answer2").on("click", function () { })
-    $("#answer3").on("click", function () { })
-    $("#answer4").on("click", function () { })
-
-}
 
 
 
 
 function quizResults() {
+    clearAnswers();
 
-    $("#game").text(`Number of correct answers: ${correctAnswers}`);
-    $("#game").text(`Number of incorrect answers: ${incorrectAnswers}`);
-    $("#game").text(`Number of unanswered questions: ${unanswered}`);
+    clearInterval(id);
+    $("#timeRemaining").css("display", "none");
+    $("#questions").append(`Number of correct answers: ${correctAnswers}`);
+    $("#questions").append(`Number of incorrect answers: ${incorrectAnswers}`);
+    $("#questions").append(`Number of unanswered questions: ${unanswered}`);
 
     $("#startOver").css("display", "inherit");
 
