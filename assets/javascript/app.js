@@ -166,12 +166,7 @@ function questionOne() {
     })
 
 
-    if (questionTimer < 1) {
-
-        clearInterval(timerId);
-        return unanswered++;
-
-    }
+    
 
 
 
@@ -307,12 +302,7 @@ function questionTwo() {
     })
 
 
-    if (questionTimer < 1) {
-
-        clearInterval(timerId);
-        return unanswered++;
-
-    }
+    
 
 
 
@@ -452,12 +442,7 @@ function questionThree() {
     })
 
 
-    if (questionTimer < 1) {
-
-        clearInterval(timerId);
-        return unanswered++;
-
-    }
+    
 
 
 
@@ -592,12 +577,7 @@ function questionFour() {
     })
 
 
-    if (questionTimer < 1) {
-
-        clearInterval(timerId);
-        return unanswered++;
-
-    }
+    
 
 
 
@@ -735,12 +715,7 @@ function questionFive() {
     })
 
 
-    if (questionTimer < 1) {
-
-        clearInterval(timerId);
-        return unanswered++;
-
-    }
+    
 
 
 
@@ -755,6 +730,12 @@ function questionFive() {
 
 
 function quizResults() {
+
+
+    $(".answers").css("display", "none");
+    $("#question").empty();
+    $(".game").css("display", "none");
+
     clearAnswers();
 
     clearInterval(id);
